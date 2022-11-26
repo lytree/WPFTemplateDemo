@@ -1,0 +1,118 @@
+﻿<Grid x:Class="WPFTemplate.UserControl.Main.NonClientAreaContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Height="29"
+      DataContext="{Binding NoUser,Source={StaticResource Locator}}"
+      xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+        <Menu Margin="10,0,0,0" Background="Transparent">
+            <MenuItem Height="29" Header="代码仓库">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/ghost1372/HandyControls" Header="GitHub">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource GithubGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.nuget.org/packages/HandyControls" Header="NuGet">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource NugetGeometry}" Fill="#30a5dd" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls" Header="VS 插件">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource VisualStudioGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Height="29" Header="关于">
+                <MenuItem Command="{Binding OpenViewCmd}"  Header="贡献者">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource ContributorsGeometry}" Fill="#ef6c00" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="mailto:836904362@qq.com" Header="邮箱">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource EmailGeometry}" Fill="{DynamicResource WarningBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.cnblogs.com/nabian" Header="博客">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource CnblogsGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="示例">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource CodeGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                    <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/AFei19911012/HandyControl" Header="AFei19911012 / HandyControl">
+                        <MenuItem.Icon>
+                            <Path Data="{StaticResource CodeGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="文献资料">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource DocGeometry}" Fill="{DynamicResource PrimaryBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                    <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/ghost1372/HandyControl/wiki/Documentation" Header="Wiki">
+                        <MenuItem.Icon>
+                            <Path Data="{StaticResource WikiGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://ghost1372.github.io" Header="文档">
+                        <MenuItem.Icon>
+                            <Path Data="{StaticResource LogoGeometry}" Fill="#ef6c00" Stretch="Uniform"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="关于" Click="MenuAbout_OnClick">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource InfoGeometry}" Fill="{DynamicResource SuccessBrush}" Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <!-- <MenuItem Height="29" Header="推荐"> -->
+            <!--     <MenuItem Header="项目" Command="{Binding OpenViewCmd}" CommandParameter="{x:Static data:MessageToken.ProjectsView}" > -->
+            <!--         <MenuItem.Icon> -->
+            <!--             <Path Data="{StaticResource ProjectGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/> -->
+            <!--         </MenuItem.Icon> -->
+            <!--     </MenuItem> -->
+            <!--     <MenuItem Header="博客" Command="{Binding OpenViewCmd}" CommandParameter="{x:Static data:MessageToken.BlogsView}" > -->
+            <!--         <MenuItem.Icon> -->
+            <!--             <Path Data="{StaticResource BlogGeometry}" Fill="{DynamicResource PrimaryBrush}" Stretch="Uniform"/> -->
+            <!--         </MenuItem.Icon> -->
+            <!--     </MenuItem> -->
+            <!--     <MenuItem Header="网站" Command="{Binding OpenViewCmd}" CommandParameter="{x:Static data:MessageToken.WebsitesView}" > -->
+            <!--         <MenuItem.Icon> -->
+            <!--             <Path Data="{StaticResource WebsiteGeometry}" Fill="{DynamicResource WarningBrush}" Stretch="Uniform"/> -->
+            <!--         </MenuItem.Icon> -->
+            <!--     </MenuItem> -->
+            <!-- </MenuItem> -->
+        </Menu>
+        <Border Margin="10,0,0,0" VerticalAlignment="Center" CornerRadius="2" Padding="10,4" Background="{DynamicResource SecondaryRegionBrush}">
+            <TextBlock FontWeight="Bold" Text="{Binding VersionInfo}" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextBrush}"/>
+        </Border>
+    </StackPanel>
+    <Button Grid.Column="1" Click="ButtonConfig_OnClick" Name="ButtonConfig" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource ConfigGeometry}"/>
+    <Popup AllowsTransparency="True" Grid.Column="1" PlacementTarget="{Binding ElementName=ButtonConfig}" HorizontalOffset="-28" Name="PopupConfig" VerticalOffset="6" StaysOpen="False">
+        <Border Background="{DynamicResource SecondaryRegionBrush}" CornerRadius="4" Margin="16" Effect="{StaticResource EffectShadow2}">
+            <StackPanel Orientation="Horizontal">
+                <hc:UniformSpacingPanel Button.Click="ButtonLangs_OnClick" Orientation="Vertical" Margin="10" Spacing="10" ChildWrapping="Wrap" MaxHeight="134">
+                    <!--todo 齿轮 -->
+                </hc:UniformSpacingPanel>
+                <hc:Divider LineStrokeDashArray="2,2" Orientation="Vertical" Margin="0,20" LineStrokeThickness="2"/>
+                <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
+                    <Button Tag="{x:Static hc:ApplicationTheme.Light}" Style="{StaticResource ButtonCustom}">
+                        <Border Background="White" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
+                    </Button>
+                    <Button Tag="{x:Static hc:ApplicationTheme.Dark}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
+                        <Border Background="Black" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Popup>
+</Grid>

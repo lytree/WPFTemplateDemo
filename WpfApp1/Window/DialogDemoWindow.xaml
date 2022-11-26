@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPFTemplate.Window.DialogDemoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:data="clr-namespace:WPFTemplate.Data"
+        DataContext="{Binding DialogDemo,Source={StaticResource Locator}}"
+        Title="对话框示例"
+        Width="800"
+        Height="500">
+    <hc:TransitioningContentControl>
+        <StackPanel Margin="32" VerticalAlignment="Center">
+            <Button Content="在当前窗口显示" Command="{Binding ShowWithTokenCmd}" CommandParameter="{Binding DialogToken,RelativeSource={RelativeSource AncestorType=Window}}"/>
+            <Button Margin="0,10,0,0" Content="在当前窗口显示" Command="{Binding ShowWithTokenCmd}" CommandParameter="{x:Static data:MessageToken.MainWindow}"/>
+        </StackPanel>
+    </hc:TransitioningContentControl>
+</Window>
