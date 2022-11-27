@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
@@ -29,8 +31,8 @@ public partial class MainContent
     {
         InitializeComponent();
         //
-        // Messenger.Default.Register<bool>(this, MessageToken.FullSwitch, FullSwitch);
-        // Messenger.Default.Register<ApplicationTheme>(this, MessageToken.SkinUpdated, SkinUpdated);
+        WeakReferenceMessenger.Default.Register<MainContent, MessageToken.FullSwitch, string>(this, nameof(MessageToken.FullSwitch), (r, m) => this.FullSwitch(m.IsFull));
+        WeakReferenceMessenger.Default.Register<MainContent, MessageToken.SkinUpdated, string>(this, nameof(MessageToken.SkinUpdated), (r, m) => this.SkinUpdated(m.Theme));
     }
 
     private void FullSwitch(bool isFull)

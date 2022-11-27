@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Height="29"
       DataContext="{Binding NoUser,Source={StaticResource Locator}}"
-      xmlns:hc="https://handyorg.github.io/handycontrol">
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      xmlns:data="clr-namespace:WPFTemplate.Data">
     <Grid.ColumnDefinitions>
         <ColumnDefinition/>
         <ColumnDefinition Width="Auto"/>
@@ -28,7 +29,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Height="29" Header="关于">
-                <MenuItem Command="{Binding OpenViewCmd}"  Header="贡献者">
+                <MenuItem Command="{Binding OpenViewCmd}" CommandParameter="{x:Static data:MessageToken.ContributorsView}"  Header="贡献者">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource ContributorsGeometry}" Fill="#ef6c00" Stretch="Uniform"/>
                     </MenuItem.Icon>
@@ -100,9 +101,7 @@
     <Popup AllowsTransparency="True" Grid.Column="1" PlacementTarget="{Binding ElementName=ButtonConfig}" HorizontalOffset="-28" Name="PopupConfig" VerticalOffset="6" StaysOpen="False">
         <Border Background="{DynamicResource SecondaryRegionBrush}" CornerRadius="4" Margin="16" Effect="{StaticResource EffectShadow2}">
             <StackPanel Orientation="Horizontal">
-                <hc:UniformSpacingPanel Button.Click="ButtonLangs_OnClick" Orientation="Vertical" Margin="10" Spacing="10" ChildWrapping="Wrap" MaxHeight="134">
-                    <!--todo 齿轮 -->
-                </hc:UniformSpacingPanel>
+                <!--todo 齿轮 -->
                 <hc:Divider LineStrokeDashArray="2,2" Orientation="Vertical" Margin="0,20" LineStrokeThickness="2"/>
                 <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
                     <Button Tag="{x:Static hc:ApplicationTheme.Light}" Style="{StaticResource ButtonCustom}">

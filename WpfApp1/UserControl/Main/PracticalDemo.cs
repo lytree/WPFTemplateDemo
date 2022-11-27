@@ -1,4 +1,4 @@
-﻿namespace WPFTemplate.UserControl.Main;
+﻿namespace WPFTemplate.UserControl;
 
 public partial class PracticalDemo
 {

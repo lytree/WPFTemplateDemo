@@ -14,6 +14,7 @@ using WPFTemplate.Data.Model;
 using WPFTemplate.Service.Data;
 using WPFTemplate.Tools.Helper;
 using WPFTemplate.UserControl.Basic;
+using static WPFTemplate.Data.MessageToken;
 
 namespace WPFTemplate.ViewModel.Main;
 
@@ -93,33 +94,29 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 
     private void UpdateMainContent()
     {
-        // Messenger.Register<object>(this, MessageToken.LoadShowContent, obj =>
-        // {
-        //     if (SubContent is IDisposable disposable)
-        //     {
-        //         disposable.Dispose();
-        //     }
-        //     SubContent = obj;
-        // }, true);
+        Messenger.Register<MainViewModel, LoadShowContent, string>(this, nameof(LoadShowContent), (r, obj) =>
+        {
+            if (SubContent is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+            SubContent = obj.Obj;
+        });
     }
 
     private void UpdateLeftContent()
     {
-        // //clear status
-        // Messenger.Register<object>(this, MessageToken.ClearLeftSelected, obj =>
-        // {
-        //     DemoItemCurrent = null;
-        //     foreach (var item in DemoInfoCollection)
-        //     {
-        //         item.SelectedIndex = -1;
-        //     }
-        // });
+        //clear status
+        Messenger.Register<MainViewModel, LoadShowContent, string>(this, nameof(ClearLeftSelected), (r, obj) =>
+        {
+            DemoItemCurrent = null;
+            foreach (var item in DemoInfoCollection)
+            {
+                item.SelectedIndex = -1;
+            }
+        });
 
-        // Messenger.Register<object>(this, MessageToken.LangUpdated, obj =>
-        // {
-        //     if (DemoItemCurrent == null) return;
-        //     ContentTitle = LangProvider.GetLang(DemoItemCurrent.Name);
-        // });
+
 
         //load items
         DemoInfoCollection = new ObservableCollection<DemoInfoModel>();

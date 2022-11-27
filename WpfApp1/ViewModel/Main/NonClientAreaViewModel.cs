@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using WPFTemplate.Data;
@@ -13,13 +14,15 @@ public class NonClientAreaViewModel : ObservableRecipient
         VersionInfo = VersionHelper.GetVersion();
     }
 
-    public RelayCommand<string> OpenViewCmd => new(OpenView);
+    public RelayCommand<string> OpenViewCmd => new(execute: OpenView);
 
-    private void OpenView(string viewName)
+    private void OpenView(string? viewName)
     {
-        // Messenger.Send<string>(null, MessageToken.ClearLeftSelected);
-        // Messenger.Send(true, MessageToken.FullSwitch);
-        Messenger.Send(AssemblyHelper.CreateInternalInstance($"UserControl.{viewName}"), MessageToken.LoadShowContent);
+        Console.WriteLine(viewName);
+        Messenger.Send(new MessageToken.ClearLeftSelected(null), nameof(MessageToken.ClearLeftSelected));
+        Messenger.Send(new MessageToken.FullSwitch(true), nameof(MessageToken.FullSwitch));
+       object obj =  AssemblyHelper.CreateInternalInstance($"UserControl.{viewName}");
+        Messenger.Send(new MessageToken.LoadShowContent(obj), nameof(MessageToken.LoadShowContent));
     }
 
     private string _versionInfo;

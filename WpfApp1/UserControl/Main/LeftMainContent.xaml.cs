@@ -87,7 +87,6 @@ public partial class LeftMainContent
                 }
                 else
                 {
-                    var name = item.Name;
                     item.IsVisible = true;
                     item.QueriesText = _searchKey;
                 }

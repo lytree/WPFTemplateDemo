@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Controls;
 using HandyControl.Tools;
 using WPFTemplate.Data;
@@ -15,12 +16,12 @@ namespace WPFTemplate
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
         protected override void OnContentRendered(EventArgs e)
         {
@@ -41,8 +42,8 @@ namespace WPFTemplate
             Dialog.SetToken(this, MessageToken.MainWindow);
             WindowAttach.SetIgnoreAltF4(this, true);
 
-            // Messenger.Default.Send(true, MessageToken.FullSwitch);
-            // Messenger.Default.Send(AssemblyHelper.CreateInternalInstance($"UserControl.{MessageToken.PracticalDemo}"), MessageToken.LoadShowContent);
+            WeakReferenceMessenger.Default.Send(new MessageToken.FullSwitch(true), nameof(MessageToken.FullSwitch));
+            WeakReferenceMessenger.Default.Send(new MessageToken.LoadShowContent(AssemblyHelper.CreateInternalInstance($"UserControl.{MessageToken.PracticalDemo}")), nameof(MessageToken.LoadShowContent));
         }
         public MainViewModel ViewModel => (MainViewModel)DataContext;
 

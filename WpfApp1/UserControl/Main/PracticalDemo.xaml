@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPFTemplate.UserControl.Main.PracticalDemo"
+﻿<UserControl x:Class="WPFTemplate.UserControl.PracticalDemo"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"

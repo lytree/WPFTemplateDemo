@@ -15,18 +15,6 @@ public partial class NonClientAreaContent
         InitializeComponent();
     }
 
-    private void ButtonLangs_OnClick(object sender, RoutedEventArgs e)
-    {
-        if (e.OriginalSource is Button { Tag: string langName })
-        {
-            PopupConfig.IsOpen = false;
-            // Messenger.Default.Send<object>(null, MessageToken.LangUpdated);
-
-            GlobalData.Config.Lang = langName;
-            GlobalData.Save();
-        }
-    }
-
     private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
 
     private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)

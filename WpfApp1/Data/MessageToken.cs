@@ -1,14 +1,16 @@
-﻿namespace WPFTemplate.Data;
+﻿using HandyControl.Themes;
+
+namespace WPFTemplate.Data;
 
 public class MessageToken
 {
-    public static readonly string LoadShowContent = nameof(LoadShowContent);
+    // public static readonly string LoadShowContent = nameof(LoadShowContent);
 
-    public static readonly string FullSwitch = nameof(FullSwitch);
+    // public static readonly string FullSwitch = nameof(FullSwitch);
 
     public static readonly string ContributorsView = nameof(ContributorsView);
 
-    public static readonly string ClearLeftSelected = nameof(ClearLeftSelected);
+    // public static readonly string ClearLeftSelected = nameof(ClearLeftSelected);
 
     public static readonly string SendChatMessage = nameof(SendChatMessage);
 
@@ -52,6 +54,47 @@ public class MessageToken
 
     public static readonly string LangUpdated = nameof(LangUpdated);
 
-    public static readonly string SkinUpdated = nameof(SkinUpdated);
+    // public static readonly string SkinUpdated = nameof(SkinUpdated);
+
+    public sealed class ClearLeftSelected
+    {
+        public ClearLeftSelected(object obj)
+        {
+            Obj = obj;
+        }
+
+        public object Obj { get; set; }
+    }
+
+    public sealed class LoadShowContent
+    {
+        public LoadShowContent(object obj)
+        {
+            this.Obj = obj;
+        }
+
+        public object Obj { get; set; }
+    }
+
+
+    public sealed class SkinUpdated
+    {
+        public SkinUpdated(ApplicationTheme theme)
+        {
+            Theme = theme;
+        }
+
+        public ApplicationTheme Theme { get; set; }
+    }
+
+    public sealed class FullSwitch
+    {
+        public FullSwitch(bool isFull)
+        {
+            IsFull = isFull;
+        }
+
+        public bool IsFull { get; set; }
+    }
 
 }
