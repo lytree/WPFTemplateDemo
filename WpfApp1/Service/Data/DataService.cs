@@ -359,9 +359,9 @@ public class DataService
         };
     }
 
-    internal List<DemoInfoModel> GetDemoInfo()
+    internal List<ContextInfoModel> GetDemoInfo()
     {
-        var infoList = new List<DemoInfoModel>();
+        var infoList = new List<ContextInfoModel>();
 
         var stream = Application.GetResourceStream(new Uri("Data/DemoInfo.json", UriKind.Relative))?.Stream;
         if (stream == null) return infoList;
@@ -377,13 +377,13 @@ public class DataService
         {
             var titleKey = (string)item.title;
             var title = titleKey;
-            List<DemoItemModel> list = Convert2DemoItemList(item.demoItemList);
+            List<ContentItemModel> list = Convert2ContextItemList(item.demoItemList);
 
-            var demoInfoModel = new DemoInfoModel
+            var demoInfoModel = new ContextInfoModel
             {
                 Key = titleKey,
                 Title = title,
-                DemoItemList = list,
+                ContextItemList = list,
                 SelectedIndex = (int)item.selectedIndex,
                 IsGroupEnabled = (bool)item.group
             };
@@ -394,9 +394,9 @@ public class DataService
         return infoList;
     }
 
-    private List<DemoItemModel> Convert2DemoItemList(dynamic list)
+    private List<ContentItemModel> Convert2ContextItemList(dynamic list)
     {
-        var resultList = new List<DemoItemModel>();
+        var resultList = new List<ContentItemModel>();
 
         foreach (var item in list)
         {
@@ -410,7 +410,7 @@ public class DataService
                 groupName = "Misc";
             }
 
-            resultList.Add(new DemoItemModel
+            resultList.Add(new ContentItemModel
             {
                 Name = name,
                 TargetCtlName = targetCtlName,
@@ -423,15 +423,15 @@ public class DataService
         return resultList;
     }
 
-    public string GetDemoUrl(DemoInfoModel demoInfo, DemoItemModel demoItem)
+    public string GetDemoUrl(ContextInfoModel contextInfo, ContentItemModel contentItem)
     {
-        var key = demoInfo.Key switch
+        var key = contextInfo.Key switch
         {
             "Styles" => "native_controls",
             "Controls" => "extend_controls",
             "Tools" => "tools",
             _ => string.Empty
         };
-        return $"https://ghost1372.github.io/handycontrol/{key}/{demoItem.Name[0].ToString().ToLower()}{demoItem.Name.Substring(1)}";
+        return $"https://ghost1372.github.io/handycontrol/{key}/{contentItem.Name[0].ToString().ToLower()}{contentItem.Name.Substring(1)}";
     }
 }

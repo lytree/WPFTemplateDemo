@@ -2,18 +2,18 @@
 
 namespace WPFTemplate.Data.Model;
 
-public class DemoItemModel : ObservableRecipient
+public class ContentItemModel : ObservableRecipient
 {
     private bool _isVisible = true;
     private string _queriesText = string.Empty;
 
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    public string GroupName { get; set; }
+    public string? GroupName { get; set; }
 
-    public string TargetCtlName { get; set; }
+    public string? TargetCtlName { get; set; }
 
-    public string ImageName { get; set; }
+    public string? ImageName { get; set; }
 
     public bool IsNew { get; set; }
 

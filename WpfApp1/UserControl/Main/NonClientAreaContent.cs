@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Themes;
 using HandyControl.Tools;
 using WPFTemplate.Data;
@@ -25,8 +26,8 @@ public partial class NonClientAreaContent
             if (tag.Equals(GlobalData.Config.Theme)) return;
             GlobalData.Config.Theme = tag;
             GlobalData.Save();
-            // ((App) Application.Current).UpdateSkin(tag);
-            // Messengers.Default.Send(tag, MessageToken.SkinUpdated);
+            ((App)Application.Current).UpdateSkin(tag);
+            WeakReferenceMessenger.Default.Send(new MessageToken.SkinUpdated(tag), nameof(MessageToken.SkinUpdated));
         }
     }
 

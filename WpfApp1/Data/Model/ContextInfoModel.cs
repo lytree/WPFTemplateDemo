@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace WPFTemplate.Data.Model;
 
-public class DemoInfoModel : ObservableRecipient
+public class ContextInfoModel : ObservableRecipient
 {
-    public string Key { get; set; }
+    public string? Key { get; set; }
 
-    private string _title;
+    private string? _title;
 
-    public string Title
+    public string? Title
     {
         get => _title;
 
@@ -29,5 +29,5 @@ public class DemoInfoModel : ObservableRecipient
 
     public bool IsGroupEnabled { get; set; }
 
-    public IList<DemoItemModel> DemoItemList { get; set; }
+    public IList<ContentItemModel>? ContextItemList { get; set; }
 }

@@ -133,8 +133,8 @@ public partial class MainContent
 
     private void UpdateTextEditor()
     {
-        var typeKey = ViewModelLocator.Instance.Main.DemoInfoCurrent.Key;
-        var demoKey = ViewModelLocator.Instance.Main.DemoItemCurrent.TargetCtlName;
+        var typeKey = ViewModelLocator.Instance.Main.ContextInfoCurrent.Key;
+        var demoKey = ViewModelLocator.Instance.Main.ContentItemCurrent.TargetCtlName;
         if (Equals(_currentDemoKey, demoKey))
         {
             return;

@@ -49,10 +49,5 @@ public class ViewModelLocator
     public MainViewModel Main => Ioc.Default.GetRequiredService<MainViewModel>();
 
     public NonClientAreaViewModel NoUser => Ioc.Default.GetRequiredService<NonClientAreaViewModel>();
-    public ItemsDisplayViewModel BlogsView => Ioc.Default.GetRequiredService<ItemsDisplayViewModel>();
-
-    public ItemsDisplayViewModel ProjectsView => Ioc.Default.GetService<ItemsDisplayViewModel>();
-
-    public ItemsDisplayViewModel WebsitesView => Ioc.Default.GetService<ItemsDisplayViewModel>();
     #endregion
 }

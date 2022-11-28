@@ -27,9 +27,9 @@ public partial class LeftMainContent
     private void TabControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (e.AddedItems.Count == 0) return;
-        if (e.AddedItems[0] is DemoInfoModel demoInfo)
+        if (e.AddedItems[0] is ContextInfoModel demoInfo)
         {
-            ViewModelLocator.Instance.Main.DemoInfoCurrent = demoInfo;
+            ViewModelLocator.Instance.Main.ContextInfoCurrent = demoInfo;
             var selectedIndex = demoInfo.SelectedIndex;
             demoInfo.SelectedIndex = -1;
             demoInfo.SelectedIndex = selectedIndex;
@@ -64,7 +64,7 @@ public partial class LeftMainContent
     {
         if (string.IsNullOrEmpty(_searchKey))
         {
-            foreach (var item in ViewModelLocator.Instance.Main.DemoInfoCurrent.DemoItemList)
+            foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
             {
                 item.IsVisible = true;
                 item.QueriesText = string.Empty;
@@ -73,7 +73,7 @@ public partial class LeftMainContent
         else
         {
             var key = _searchKey.ToLower();
-            foreach (var item in ViewModelLocator.Instance.Main.DemoInfoCurrent.DemoItemList)
+            foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
             {
                 if (item.Name.ToLower().Contains(key))
                 {
@@ -94,13 +94,13 @@ public partial class LeftMainContent
         }
     }
 
-    private void GroupItems(TabControl tabControl, DemoInfoModel demoInfo)
+    private void GroupItems(TabControl tabControl, ContextInfoModel contextInfo)
     {
         var listBox = VisualHelper.GetChild<ListBox>(tabControl);
         if (listBox == null) return;
         listBox.Items.GroupDescriptions?.Clear();
 
-        if (demoInfo.IsGroupEnabled)
+        if (contextInfo.IsGroupEnabled)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {

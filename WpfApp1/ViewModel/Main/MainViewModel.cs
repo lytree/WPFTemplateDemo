@@ -34,9 +34,9 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
         UpdateLeftContent();
     }
 
-    public DemoItemModel DemoItemCurrent { get; private set; }
+    public ContentItemModel ContentItemCurrent { get; private set; }
 
-    public DemoInfoModel DemoInfoCurrent { get; set; }
+    public ContextInfoModel ContextInfoCurrent { get; set; }
 
     public object SubContent
     {
@@ -62,9 +62,9 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 
     }
 
-    public ObservableCollection<DemoInfoModel> DemoInfoCollection { get; set; }
+    public ObservableCollection<ContextInfoModel> DemoInfoCollection { get; set; }
 
-    public RelayCommand<SelectionChangedEventArgs> SwitchDemoCmd => new(SwitchDemo);
+    public RelayCommand<SelectionChangedEventArgs> SwitchDemoCmd => new(SwitchContent);
 
     public RelayCommand OpenPracticalDemoCmd => new(OpenPracticalDemo);
 
@@ -74,17 +74,17 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 
     public RelayCommand OpenDocCmd => new(() =>
     {
-        if (DemoItemCurrent is null)
+        if (ContentItemCurrent is null)
         {
             return;
         }
 
-        ControlCommands.OpenLink.Execute(_dataService.GetDemoUrl(DemoInfoCurrent, DemoItemCurrent));
+        ControlCommands.OpenLink.Execute(_dataService.GetDemoUrl(ContextInfoCurrent, ContentItemCurrent));
     });
 
     public RelayCommand OpenCodeCmd => new(() =>
     {
-        if (DemoItemCurrent is null)
+        if (ContentItemCurrent is null)
         {
             return;
         }
@@ -109,7 +109,7 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
         //clear status
         Messenger.Register<MainViewModel, LoadShowContent, string>(this, nameof(ClearLeftSelected), (r, obj) =>
         {
-            DemoItemCurrent = null;
+            ContentItemCurrent = null;
             foreach (var item in DemoInfoCollection)
             {
                 item.SelectedIndex = -1;
@@ -119,7 +119,7 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 
 
         //load items
-        DemoInfoCollection = new ObservableCollection<DemoInfoModel>();
+        DemoInfoCollection = new ObservableCollection<ContextInfoModel>();
         Task.Run(() =>
         {
             DataList = _dataService.GetDemoDataList();
@@ -134,19 +134,19 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
         });
     }
 
-    private void SwitchDemo(SelectionChangedEventArgs e)
+    private void SwitchContent(SelectionChangedEventArgs e)
     {
         if (e.AddedItems.Count == 0) return;
-        if (e.AddedItems[0] is DemoItemModel item)
+        if (e.AddedItems[0] is ContentItemModel item)
         {
-            if (Equals(DemoItemCurrent, item)) return;
-            SwitchDemo(item);
+            if (Equals(ContentItemCurrent, item)) return;
+            SwitchContent(item);
         }
     }
 
-    private void SwitchDemo(DemoItemModel item)
+    private void SwitchContent(ContentItemModel item)
     {
-        DemoItemCurrent = item;
+        ContentItemCurrent = item;
         ContentTitle = LangProvider.GetLang(item.Name);
         var obj = AssemblyHelper.ResolveByKey(item.TargetCtlName);
         var ctl = obj ?? AssemblyHelper.CreateInternalInstance($"UserControl.{item.TargetCtlName}");
