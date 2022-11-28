@@ -2,6 +2,7 @@
 using System.Windows;
 using HandyControl.Controls;
 using WPFTemplate.Data;
+using WPFTemplate.ViewModel.Controls;
 
 namespace WPFTemplate.Window;
 
@@ -10,7 +11,7 @@ public partial class DialogDemoWindow
     public DialogDemoWindow()
     {
         InitializeComponent();
-
+        DataContext = new DialogDemoViewModel();
         var dialogToken = $"{MessageToken.DialogDemoWindow}+{DateTime.Now:yyyyMMddHHmmssfff}";
         DialogToken = dialogToken;
         Dialog.SetToken(this, dialogToken);

@@ -8,7 +8,7 @@ public class ViewModelBase<T> : ObservableRecipient
     /// <summary>
     ///     数据列表
     /// </summary>
-    private IList<T> _dataList;
+    private IList<T>? _dataList;
 
     /// <summary>
     ///     数据列表
