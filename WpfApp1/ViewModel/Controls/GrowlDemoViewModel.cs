@@ -12,7 +12,7 @@ public class GrowlDemoViewModel
 
     public GrowlDemoViewModel()
     {
-
+        _token = "";
     }
 
     public GrowlDemoViewModel(string token)
