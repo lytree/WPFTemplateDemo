@@ -11,7 +11,5 @@ public partial class ContributorsView
     public ContributorsView()
     {
         InitializeComponent();
-
-        this.DataContext = new ItemsDisplayViewModel(Ioc.Default.GetService<DataService>().GetContributorDataList);
     }
 }

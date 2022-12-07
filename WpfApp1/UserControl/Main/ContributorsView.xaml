@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:basic="clr-namespace:WPFTemplate.UserControl.Basic"
-             Background="{DynamicResource SecondaryRegionBrush}">
+             Background="{DynamicResource SecondaryRegionBrush}"
+             DataContext="{Binding ContributorsView,Source={StaticResource Locator}}"
+    >
     <hc:Watermark FontWeight="Bold" Mark="{StaticResource GitHubStrGeometry}" MarkMargin="30,0" MarkWidth="200" MarkHeight="100">
         <hc:ToggleBlock IsChecked="{Binding DataGot}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <hc:ToggleBlock.UnCheckedContent>
