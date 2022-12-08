@@ -21,8 +21,6 @@ public class ViewModelLocator
         var builder = new ContainerBuilder();
         builder.RegisterType<MainViewModel>().SingleInstance(); ;
         builder.RegisterType<DataService>();
-        builder.Register((c) => new GrowlDemoViewModel()).Named<GrowlDemoViewModel>("GrowlDemo").SingleInstance();
-        builder.Register((c) => new GrowlDemoViewModel(MessageToken.GrowlDemoPanel)).Named<GrowlDemoViewModel>("GrowlDemoWithToken").SingleInstance();
         builder.Register((c) => new ItemsDisplayViewModel(c.Resolve<DataService>().GetBlogDataList)).Named<ItemsDisplayViewModel>("Blogs").SingleInstance();
         builder.Register((c) => new ItemsDisplayViewModel(c.Resolve<DataService>().GetProjectDataList)).Named<ItemsDisplayViewModel>("Projects").SingleInstance();
         builder.Register((c) => new ItemsDisplayViewModel(c.Resolve<DataService>().GetWebsiteDataList)).Named<ItemsDisplayViewModel>("Websites").SingleInstance();
@@ -61,12 +59,7 @@ public class ViewModelLocator
     public ItemsDisplayViewModel ProjectsView => _icContainer.ResolveNamed<ItemsDisplayViewModel>("Projects");
 
     public ItemsDisplayViewModel WebsitesView => _icContainer.ResolveNamed<ItemsDisplayViewModel>("Websites");
-
-
-    public GrowlDemoViewModel GrowlDemo => _icContainer.ResolveNamed<GrowlDemoViewModel>("GrowlDemo");
-
-    public GrowlDemoViewModel GrowlDemoWithToken => _icContainer.ResolveNamed<GrowlDemoViewModel>("GrowlDemoWithToken");
-
+    
     public ImageBrowserDemoViewModel ImageBrowserDemo => _icContainer.Resolve<ImageBrowserDemoViewModel>();
 
     public WindowDemoViewModel WindowDemo => _icContainer.Resolve<WindowDemoViewModel>();

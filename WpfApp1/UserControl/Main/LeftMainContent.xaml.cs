@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Threading;
+using CommunityToolkit.Mvvm.Input;
 using HandyControl.Data;
 using HandyControl.Tools;
 using WPFTemplate.Data.Model;
@@ -38,28 +39,6 @@ public partial class LeftMainContent
             GroupItems(sender as TabControl, demoInfo);
         }
     }
-
-    private void ButtonAscending_OnClick(object sender, RoutedEventArgs e)
-    {
-        if (sender is ToggleButton button && button.Tag is ItemsControl itemsControl)
-        {
-            if (button.IsChecked == true)
-            {
-                itemsControl.Items.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
-            }
-            else
-            {
-                itemsControl.Items.SortDescriptions.Clear();
-            }
-        }
-    }
-
-    private void SearchBar_OnSearchStarted(object sender, FunctionEventArgs<string> e)
-    {
-        _searchKey = e.Info;
-        FilterItems();
-    }
-
     private void FilterItems()
     {
         if (string.IsNullOrEmpty(_searchKey))

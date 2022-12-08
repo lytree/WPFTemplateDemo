@@ -35,8 +35,6 @@ namespace WPFTemplate
             {
                 new(ViewModel.GlobalShortcutInfoCmd, Key.I, ModifierKeys.Control | ModifierKeys.Alt),
                 new(ViewModel.GlobalShortcutWarningCmd, Key.E, ModifierKeys.Control | ModifierKeys.Alt),
-                new(ViewModel.OpenDocCmd, Key.F1, ModifierKeys.None),
-                new(ViewModel.OpenCodeCmd, Key.F12, ModifierKeys.None)
             });
 
             Dialog.SetToken(this, MessageToken.MainWindow);
@@ -51,7 +49,6 @@ namespace WPFTemplate
         {
             if (GlobalData.NotifyIconIsShow)
             {
-                // MessageBox.Info(Properties.Langs.Lang.AppClosingTip, Properties.Langs.Lang.Tip);
                 Hide();
                 e.Cancel = true;
             }

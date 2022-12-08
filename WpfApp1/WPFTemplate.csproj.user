@@ -49,8 +49,5 @@
     <Page Update="Window\DialogDemoWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Window\GrowlDemoWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 </Project>

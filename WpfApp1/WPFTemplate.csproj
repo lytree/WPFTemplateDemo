@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\DemoInfo.json" />
+    <None Remove="Data\LeftItemInfo.json" />
     <None Remove="Data\SideMenuConfig.json" />
     <None Remove="Resources\Img\1.jpg" />
     <None Remove="Resources\Img\2.jpg" />
@@ -175,7 +175,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Data\DemoInfo.json">
+    <Resource Include="Data\LeftItemInfo.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Data\SideMenuConfig.json">

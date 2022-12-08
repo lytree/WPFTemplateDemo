@@ -363,7 +363,7 @@ public class DataService
     {
         var infoList = new List<ContextInfoModel>();
 
-        var stream = Application.GetResourceStream(new Uri("Data/DemoInfo.json", UriKind.Relative))?.Stream;
+        var stream = Application.GetResourceStream(new Uri("Data/LeftItemInfo.json", UriKind.Relative))?.Stream;
         if (stream == null) return infoList;
 
         string jsonStr;
@@ -377,7 +377,7 @@ public class DataService
         {
             var titleKey = (string)item.title;
             var title = titleKey;
-            List<ContentItemModel> list = Convert2ContextItemList(item.demoItemList);
+            List<ContentItemModel> list = Convert2ContextItemList(item.ControlList);
 
             var demoInfoModel = new ContextInfoModel
             {

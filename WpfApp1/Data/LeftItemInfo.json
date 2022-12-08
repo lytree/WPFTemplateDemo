@@ -1,47 +1,9 @@
 ﻿[
   {
-    "title": "Styles",
+    "title": "工具",
     "selectedIndex": -1,
-    "group":  false, 
-    "demoItemList": [
-      [ "Brush", "BrushDemoCtl", "Brush_16x", "", "" ],
-      [ "Button", "ButtonDemoCtl", "ButtonClick_16x", "", "" ],
-      [ "RepeatButton", "RepeatButtonDemoCtl", "RepeatButton_16x", "", "" ],
-      [ "ToggleButton", "ToggleButtonDemoCtl", "Toggle_16x", "", "" ],
-      [ "RadioButton", "RadioButtonDemoCtl", "RadioButton_16x", "", "" ],
-      [ "CheckBox", "CheckBoxDemoCtl", "CheckBox_16x", "", "" ],
-      [ "ScrollViewer", "NativeScrollViewerDemoCtl", "ScrollBox_16x", "", "" ],
-      [ "Slider", "SliderDemoCtl", "Slider_16x", "", "" ],
-      [ "TextBlock", "TextBlockDemoCtl", "TextBlock_16x", "", "" ],
-      [ "TextBox", "NativeTextBoxDemoCtl", "TextBox_16x", "", "" ],
-      [ "ComboBox", "NativeComboBoxDemoCtl", "ComboBox_16x", "", "" ],
-      [ "PasswordBox", "NativePasswordBoxDemoCtl", "PasswordBox_16x", "", "" ],
-      [ "Expander", "ExpanderDemoCtl", "Expander_16x", "", "" ],
-      [ "ProgressBar", "NativeProgressBarDemoCtl", "ProgressBar_16x", "", "" ],
-      [ "Calendar", "CalendarDemoCtl", "Calendar_16x", "", "" ],
-      [ "DatePicker", "NativeDatePickerDemoCtl", "DatePicker_16x", "", "" ],
-      [ "TabControl", "NativeTabControlDemoCtl", "TabPage_16x", "", "" ],
-      [ "DataGrid", "DataGridDemoCtl", "DataGrid_16x", "", "" ],
-      [ "TreeView", "TreeViewDemoCtl", "TreeView_16x", "", "" ],
-      [ "ListBox", "ListBoxDemoCtl", "ListBox_16x", "", "" ],
-      [ "ListView", "ListViewDemoCtl", "ListView_16x", "", "" ],
-      [ "GroupBox", "GroupBoxDemoCtl", "GroupBox_16x", "", "" ],
-      [ "Menu", "MenuDemoCtl", "ContextMenu_16x", "", "" ],
-      [ "RichTextBox", "RichTextBoxDemoCtl", "RichTextBox_16x", "", "" ],
-      [ "FlowDocument", "FlowDocumentDemoCtl", "WPFFlowDocument_16x", "", "" ],
-      [ "ToolBar", "ToolBarDemoCtl", "ToolBar_16x", "", "" ],
-      [ "Border", "BorderDemoCtl", "BorderElement_16x", "", "" ],
-      [ "Label", "LabelDemoCtl", "Label_16x", "", "" ],
-      [ "Frame", "FrameDemoCtl", "frame_16xLG", "", "" ],
-      [ "Window", "NativeWindowDemoCtl", "WindowsForm_16x", "", "" ],
-      [ "Geometry", "GeometryDemoCtl", "Path_16x", "", "" ]
-    ]
-  },
-  {
-    "title": "Controls",
-    "selectedIndex": 0,
     "group": true,
-    "demoItemList": [
+    "ControlList": [
       [ "FloatingBlock", "FloatingBlockDemoCtl", "thumbs_up", "", "Interacting" ],
       [ "PropertyGrid", "PropertyGridDemoCtl", "PropertyGridEditorPart_16x", "", "DataEntry" ],
       [ "ImageSelector", "ImageSelectorDemoCtl", "Image_16x", "", "DataEntry" ],
@@ -113,16 +75,6 @@
       [ "ScrollViewer", "ScrollViewerDemoCtl", "ScrollBox_16x", "", "" ],
       [ "Sprite", "SpriteDemoCtl", "HandyControl", "", "" ],
       [ "Window", "WindowDemoCtl", "WindowsForm_16x", "", "" ]
-    ]
-  },
-  {
-    "title": "Tools",
-    "selectedIndex": 0,
-    "group": false,
-    "demoItemList": [
-      [ "HatchBrushGenerator", "HatchBrushGeneratorDemoCtl", "DataGenerator_16x", "", "" ],
-      [ "Morphing_Animation", "GeometryAnimationDemoCtl", "Animation_16x", "", "" ],
-      [ "Effects", "EffectsDemoCtl", "Effects_16x", "", "" ]
     ]
   }
 ]

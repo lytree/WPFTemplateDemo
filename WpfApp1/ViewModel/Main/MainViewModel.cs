@@ -22,14 +22,12 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 {
     private object _contentTitle;
     private object _subContent;
-    private bool _isCodeOpened;
 
     private readonly DataService _dataService;
 
     public MainViewModel(DataService dataService)
     {
         _dataService = dataService;
-
         UpdateMainContent();
         UpdateLeftContent();
     }
@@ -54,14 +52,6 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
 
     }
 
-    public bool IsCodeOpened
-    {
-        get => _isCodeOpened;
-
-        set => SetProperty(ref _isCodeOpened, value);
-
-    }
-
     public ObservableCollection<ContextInfoModel> DemoInfoCollection { get; set; }
 
     public RelayCommand<SelectionChangedEventArgs> SwitchDemoCmd => new(SwitchContent);
@@ -71,26 +61,6 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
     public RelayCommand GlobalShortcutInfoCmd => new(() => Growl.Info("Global Shortcut Info"));
 
     public RelayCommand GlobalShortcutWarningCmd => new(() => Growl.Warning("Global Shortcut Warning"));
-
-    public RelayCommand OpenDocCmd => new(() =>
-    {
-        if (ContentItemCurrent is null)
-        {
-            return;
-        }
-
-        ControlCommands.OpenLink.Execute(_dataService.GetDemoUrl(ContextInfoCurrent, ContentItemCurrent));
-    });
-
-    public RelayCommand OpenCodeCmd => new(() =>
-    {
-        if (ContentItemCurrent is null)
-        {
-            return;
-        }
-
-        IsCodeOpened = !IsCodeOpened;
-    });
 
     private void UpdateMainContent()
     {
@@ -112,11 +82,9 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
             ContentItemCurrent = null;
             foreach (var item in DemoInfoCollection)
             {
-                item.SelectedIndex = -1;
+                item.SelectedIndex = 0;
             }
         });
-
-
 
         //load items
         DemoInfoCollection = new ObservableCollection<ContextInfoModel>();
@@ -147,17 +115,18 @@ public class MainViewModel : ViewModelBase<DemoDataModel>
     private void SwitchContent(ContentItemModel item)
     {
         ContentItemCurrent = item;
-        ContentTitle = LangProvider.GetLang(item.Name);
+        ContentTitle = item.Name;
         var obj = AssemblyHelper.ResolveByKey(item.TargetCtlName);
         var ctl = obj ?? AssemblyHelper.CreateInternalInstance($"UserControl.{item.TargetCtlName}");
-        // Messenger.Send(ctl is IFull, MessageToken.FullSwitch);
-        // Messenger.Send(ctl, MessageToken.LoadShowContent);
+        Messenger.Send(new MessageToken.FullSwitch(true), nameof(MessageToken.FullSwitch));
+        Messenger.Send(new MessageToken.LoadShowContent(obj), nameof(MessageToken.LoadShowContent));
     }
 
     private void OpenPracticalDemo()
     {
-        // Messenger.Send(null, MessageToken.ClearLeftSelected);
-        // Messenger.Send(AssemblyHelper.CreateInternalInstance($"UserControl.{MessageToken.PracticalDemo}"), MessageToken.LoadShowContent);
-        // Messenger.Send(true, MessageToken.FullSwitch);
+        Messenger.Send(new MessageToken.ClearLeftSelected(null), nameof(MessageToken.ClearLeftSelected));
+        Messenger.Send(new MessageToken.FullSwitch(true), nameof(MessageToken.FullSwitch));
+        object obj = AssemblyHelper.CreateInternalInstance($"UserControl.{MessageToken.PracticalDemo}");
+        Messenger.Send(new MessageToken.LoadShowContent(obj), nameof(MessageToken.LoadShowContent));
     }
 }
