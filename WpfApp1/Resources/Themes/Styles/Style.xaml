@@ -174,14 +174,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="DemoGroupItemStyle" TargetType="GroupItem">
+    <Style x:Key="LeftGroupItemStyle" TargetType="GroupItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupItem">
-                    <hc:SimpleStackPanel>
-                        <hc:Divider Content="{Binding Name}" LineStrokeDashArray="2, 2" Padding="16,0" Margin="0,16,0,10"/>
+                    <Expander Header="{Binding Name}" BorderBrush="{DynamicResource BorderBrush}">
                         <ItemsPresenter Margin="{TemplateBinding Padding}"/>
-                    </hc:SimpleStackPanel>
+                    </Expander>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

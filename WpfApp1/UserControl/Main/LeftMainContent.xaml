@@ -26,8 +26,7 @@
         </Style>
     </Border.Resources>
     <DockPanel>
-        <Button Command="{Binding OpenPracticalDemoCmd}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="10,10,10,4" Content="实用例子" BorderThickness="0" Background="{DynamicResource SecondaryRegionBrush}"
-            />
+        <Button Command="{Binding OpenPracticalDemoCmd}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="10,10,10,4" Content="首页" BorderThickness="0" Background="{DynamicResource SecondaryRegionBrush}"/>
         <TabControl SelectionChanged="TabControl_OnSelectionChanged" ItemContainerStyle="{StaticResource TabItemTransparent}" ItemsSource="{Binding DemoInfoCollection}" Style="{StaticResource TabControlInLine}" Background="Transparent" SelectedIndex="0">
             <TabControl.ItemTemplate>
                 <DataTemplate>
@@ -56,7 +55,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                             <ListBox.GroupStyle>
-                                <GroupStyle ContainerStyle="{StaticResource DemoGroupItemStyle}"/>
+                                <GroupStyle ContainerStyle="{StaticResource LeftGroupItemStyle}"/>
                             </ListBox.GroupStyle>
                         </ListBox>
                     </Grid>

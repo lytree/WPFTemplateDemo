@@ -54,12 +54,12 @@ public partial class LeftMainContent
             var key = _searchKey.ToLower();
             foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
             {
-                if (item.Name.ToLower().Contains(key))
+                if (item.Name != null && item.Name.ToLower().Contains(key))
                 {
                     item.IsVisible = true;
                     item.QueriesText = _searchKey;
                 }
-                else if (item.TargetCtlName.Replace("DemoCtl", "").ToLower().Contains(key))
+                else if (item.TargetCtlName != null && item.TargetCtlName.Replace("DemoCtl", "").ToLower().Contains(key))
                 {
                     item.IsVisible = true;
                     item.QueriesText = _searchKey;
