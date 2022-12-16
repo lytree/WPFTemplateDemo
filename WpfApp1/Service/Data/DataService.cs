@@ -48,15 +48,15 @@ public class DataService
         };
     }
 
-    internal List<DemoDataModel> GetDemoDataList()
+    internal List<ViewsDataModel> GetDemoDataList()
     {
-        var list = new List<DemoDataModel>();
+        var list = new List<ViewsDataModel>();
         for (var i = 1; i <= 20; i++)
         {
-            var dataList = new List<DemoDataModel>();
+            var dataList = new List<ViewsDataModel>();
             for (var j = 0; j < 3; j++)
             {
-                dataList.Add(new DemoDataModel
+                dataList.Add(new ViewsDataModel
                 {
                     Index = j,
                     IsSelected = j % 2 == 0,
@@ -64,7 +64,7 @@ public class DataService
                     Type = (DemoType)j
                 });
             }
-            var model = new DemoDataModel
+            var model = new ViewsDataModel
             {
                 Index = i,
                 IsSelected = i % 2 == 0,
@@ -80,13 +80,13 @@ public class DataService
         return list;
     }
 
-    internal List<DemoDataModel> GetDemoDataList(int count)
+    internal List<ViewsDataModel> GetDemoDataList(int count)
     {
-        var list = new List<DemoDataModel>();
+        var list = new List<ViewsDataModel>();
         for (var i = 1; i <= count; i++)
         {
             var index = i % 6 + 1;
-            var model = new DemoDataModel
+            var model = new ViewsDataModel
             {
                 Index = i,
                 IsSelected = i % 2 == 0,

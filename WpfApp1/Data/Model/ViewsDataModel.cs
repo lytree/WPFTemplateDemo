@@ -3,7 +3,7 @@ using WPFTemplate.Data.Enum;
 
 namespace WPFTemplate.Data.Model;
 
-public class DemoDataModel
+public class ViewsDataModel
 {
     public int Index { get; set; }
 
@@ -17,5 +17,5 @@ public class DemoDataModel
 
     public string ImgPath { get; set; }
 
-    public List<DemoDataModel> DataList { get; set; }
+    public List<ViewsDataModel> DataList { get; set; }
 }

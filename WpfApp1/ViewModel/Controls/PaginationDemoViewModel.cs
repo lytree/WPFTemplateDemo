@@ -8,12 +8,12 @@ using WPFTemplate.Service.Data;
 
 namespace WPFTemplate.ViewModel.Controls;
 
-public class PaginationDemoViewModel : ViewModelBase<DemoDataModel>
+public class PaginationDemoViewModel : ViewModelBase<ViewsDataModel>
 {
     /// <summary>
     ///     所有数据
     /// </summary>
-    private readonly List<DemoDataModel> _totalDataList;
+    private readonly List<ViewsDataModel> _totalDataList;
 
     /// <summary>
     ///     页码

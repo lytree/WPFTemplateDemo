@@ -18,7 +18,7 @@ using static WPFTemplate.Data.MessageToken;
 
 namespace WPFTemplate.ViewModel.Main;
 
-public class MainViewModel : ViewModelBase<DemoDataModel>
+public class MainViewModel : ViewModelBase<ViewsDataModel>
 {
     private object _contentTitle;
     private object _subContent;

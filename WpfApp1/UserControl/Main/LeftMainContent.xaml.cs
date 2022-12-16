@@ -18,7 +18,6 @@ namespace WPFTemplate.UserControl.Main;
 /// </summary>
 public partial class LeftMainContent
 {
-    private string _searchKey;
 
     public LeftMainContent()
     {
@@ -41,36 +40,14 @@ public partial class LeftMainContent
     }
     private void FilterItems()
     {
-        if (string.IsNullOrEmpty(_searchKey))
+
+        foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
         {
-            foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
-            {
-                item.IsVisible = true;
-                item.QueriesText = string.Empty;
-            }
+            item.IsVisible = true;
+            item.QueriesText = string.Empty;
         }
-        else
-        {
-            var key = _searchKey.ToLower();
-            foreach (var item in ViewModelLocator.Instance.Main.ContextInfoCurrent.ContextItemList)
-            {
-                if (item.Name != null && item.Name.ToLower().Contains(key))
-                {
-                    item.IsVisible = true;
-                    item.QueriesText = _searchKey;
-                }
-                else if (item.TargetCtlName != null && item.TargetCtlName.Replace("DemoCtl", "").ToLower().Contains(key))
-                {
-                    item.IsVisible = true;
-                    item.QueriesText = _searchKey;
-                }
-                else
-                {
-                    item.IsVisible = true;
-                    item.QueriesText = _searchKey;
-                }
-            }
-        }
+
+
     }
 
     private void GroupItems(TabControl tabControl, ContextInfoModel contextInfo)

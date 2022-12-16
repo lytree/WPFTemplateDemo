@@ -20,9 +20,9 @@ public class AutoCompleteTextBoxDemoViewModel : ObservableRecipient
         }
     }
 
-    public ManualObservableCollection<DemoDataModel> Items { get; set; } = new();
+    public ManualObservableCollection<ViewsDataModel> Items { get; set; } = new();
 
-    private readonly List<DemoDataModel> _dataList;
+    private readonly List<ViewsDataModel> _dataList;
 
     public AutoCompleteTextBoxDemoViewModel(DataService dataService)
     {

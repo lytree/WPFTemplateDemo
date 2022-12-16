@@ -12,10 +12,10 @@ public class TagDemoViewModel : ObservableRecipient
 {
     public TagDemoViewModel(DataService dataService)
     {
-        DataList = new ObservableCollection<DemoDataModel>(dataService.GetDemoDataList(10));
+        DataList = new ObservableCollection<ViewsDataModel>(dataService.GetDemoDataList(10));
     }
 
-    public ObservableCollection<DemoDataModel> DataList { get; set; }
+    public ObservableCollection<ViewsDataModel> DataList { get; set; }
 
     private string _tagName;
 
@@ -34,7 +34,7 @@ public class TagDemoViewModel : ObservableRecipient
             return;
         }
 
-        DataList.Insert(0, new DemoDataModel
+        DataList.Insert(0, new ViewsDataModel
         {
             IsSelected = DataList.Count % 2 == 0,
             Name = TagName
